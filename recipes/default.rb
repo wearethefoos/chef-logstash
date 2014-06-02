@@ -2,7 +2,15 @@
 # Cookbook Name:: chef-logstash
 # Recipe:: default
 #
-# Copyright (C) 2014 YOUR_NAME
+# Copyright (C) 2014 Wouter de Vos
 # 
-# All rights reserved - Do Not Redistribute
+# License: MIT
 #
+
+include_recipe "logstash::yumrepo" if platform_family? "rhel", "fedora"
+include_recipe "logstash::apt"     if platform_family? "debian"
+
+package "logstash"
+
+include_recipe "logstash::server" if node[:logstash][:server][:enabled]
+include_recipe "logstash::agent"  if node[:logstash][:agent][:enabled]

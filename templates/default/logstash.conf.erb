@@ -1,0 +1,17 @@
+# This file was created for <%= node.name %>
+# by Chef
+# Manual changes will be lost
+input {
+  <%= LogstashConf.section_to_str(@config[:inputs]) %>
+}
+
+<% unless @config[:filters].empty? -%>
+filter {
+  <%= LogstashConf.section_to_str(@config[:filters], node[:logstash][:version], @patterns_dir) %>
+}
+<% end -%>
+
+output {
+  <%= LogstashConf.section_to_str(@config[:outputs]) %>
+}
+
