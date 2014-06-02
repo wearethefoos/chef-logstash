@@ -14,3 +14,6 @@ package "logstash"
 
 include_recipe "logstash::server" if node[:logstash][:server][:enabled]
 include_recipe "logstash::agent"  if node[:logstash][:agent][:enabled]
+
+# Patch the elasticsearch_http plugin.
+include_recipe "logstash::elasticsearch_http" if node[:logstash][:server][:enabled]
