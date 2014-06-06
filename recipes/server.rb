@@ -9,5 +9,5 @@
 
 template "/etc/logstash/conf.d/server.conf" do
   source "logstash.conf.erb"
-  variables config: node[:logstash][:server]
+  variables( :config => node[:logstash][:server] )
 end
