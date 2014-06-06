@@ -9,10 +9,14 @@ action :create do
     file: {
       path: path,
       type: type,
-      tags: tags,
-      add_field: add_field
+      tags: tags
     }
   }
+
+  if add_field
+    node.set[:logstash][:beaver][:inputs].last[:file][:add_field] = add_field
+  end
+
   new_resource.updated_by_last_action(true)
 end
 
