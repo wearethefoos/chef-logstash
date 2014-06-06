@@ -62,6 +62,11 @@ python_pip node['logstash']['beaver']['pip_package'] do
   action :install
 end
 
+logstash_beaver_log "/var/log/logstash/beaver.log" do
+  type "syslog"
+  tags ["logstash", "beaver"]
+end
+
 # inputs
 files = []
 node['logstash']['beaver']['inputs'].each do |ins|
