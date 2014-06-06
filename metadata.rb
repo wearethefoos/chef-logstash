@@ -10,6 +10,6 @@ version          '0.1.0'
   supports os
 end
 
-%w{ yumrepo apt python }.each do |ckbk|
+%w{ yumrepo apt python logrotate }.each do |ckbk|
   depends ckbk
 end
