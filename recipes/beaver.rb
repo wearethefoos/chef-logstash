@@ -87,6 +87,8 @@ end
 # outputs
 outputs = []
 conf = {}
+conf['fqdn'] = node['logstash']['beaver']['fqdn'] if node['logstash']['beaver']['fqdn']
+
 node['logstash']['beaver']['outputs'].each do |outs|
   outs.each do |name, hash|
     case name
