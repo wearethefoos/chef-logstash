@@ -1,5 +1,5 @@
 action :create do
-  path = new_resource.name
+  path = new_resource.path
   type = new_resource.type || "syslog"
   tags = new_resource.tags || ["logstash"]
   add_field = new_resource.add_field || false
