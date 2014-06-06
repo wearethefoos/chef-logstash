@@ -101,7 +101,7 @@ node['logstash']['beaver']['outputs'].each do |outs|
         conf['rabbitmq_username'] = hash['user'] if hash.has_key?('user')
         conf['rabbitmq_password'] = hash['password'] if hash.has_key?('password')
         conf['rabbitmq_queue'] = hash['queue'] if hash.has_key?('queue')
-        conf['rabbitmq_exchange_type'] = hash['rabbitmq_exchange_type'] if hash.has_key?('rabbitmq_exchange_type')
+        conf['rabbitmq_exchange_type'] = hash['exchange_type'] if hash.has_key?('exchange_type')
         conf['rabbitmq_exchange'] = hash['exchange'] if hash.has_key?('exchange')
         conf['rabbitmq_exchange_durable'] = hash['durable'] if hash.has_key?('durable')
         conf['rabbitmq_key'] = hash['key'] if hash.has_key?('key')
