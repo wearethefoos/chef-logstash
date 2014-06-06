@@ -209,5 +209,5 @@ logrotate_app "logstash_beaver" do
   postrotate node['logstash']['beaver']['logrotate']['postrotate']
   options node['logstash']['beaver']['logrotate']['options']
   rotate 30
-  create "0640 #{"logstash"} #{"logstash"}"
+  create "0640 logstash logstash"
 end
