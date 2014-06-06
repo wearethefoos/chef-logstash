@@ -6,10 +6,10 @@ action :create do
 
   node.set[:logstash][:beaver][:inputs] = [] unless node[:logstash][:beaver][:inputs]
   node.set[:logstash][:beaver][:inputs][node[:logstash][:beaver][:inputs].size] = {
-    file: {
-      path: path,
-      type: type,
-      tags: tags
+    :file => {
+      :path => path,
+      :type => type,
+      :tags => tags
     }
   }
 
