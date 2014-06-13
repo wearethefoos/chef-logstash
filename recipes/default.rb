@@ -12,6 +12,18 @@ include_recipe "logstash::apt"     if platform_family? "debian"
 
 package "logstash"
 
+directory "/etc/logstash" do
+  owner "logstash"
+  group "logstash"
+  mode "0755"
+end
+
+directory "/etc/logstash/conf.d" do
+  owner "logstash"
+  group "logstash"
+  mode "0755"
+end
+
 execute "remove-server-conf" do
   command %{
     if [ -e /etc/logstash/conf.d/server.conf ]; then
