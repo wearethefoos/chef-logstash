@@ -7,6 +7,9 @@
 <%   file['path'].each do |path| -%>
 [<%= path %>]
 type: <%= file['type'] || 'file' %>
+<% if file.has_key?('format') -%>
+format: <%= file['format'] %>
+<% end -%>
 <% if file.has_key?('tags') -%>
 tags: <%= file['tags'].join(',') %>
 <% end -%>
