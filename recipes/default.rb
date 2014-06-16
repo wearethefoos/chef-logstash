@@ -42,6 +42,12 @@ execute "remove-agent-conf" do
   not_if { node[:logstash][:agent][:enabled] }
 end
 
+service "logstash" do
+  supports :restart => true, :reload => false
+  action :nothing
+  provider Chef::Provider::Service::Upstart
+end
+
 include_recipe "logstash::server" if node[:logstash][:server][:enabled]
 include_recipe "logstash::agent"  if node[:logstash][:agent][:enabled]
 
