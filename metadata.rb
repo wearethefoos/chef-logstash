@@ -10,6 +10,12 @@ version          '0.1.0'
   supports os
 end
 
-%w{ yum apt python logrotate }.each do |ckbk|
+case node["platform"
+when "fedora", "centos", "redhat"
+  depends yum
+end
+
+
+%w{  apt python logrotate }.each do |ckbk|
   depends ckbk
 end
