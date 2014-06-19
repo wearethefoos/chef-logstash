@@ -24,6 +24,12 @@ directory "/etc/logstash/conf.d" do
   mode "0755"
 end
 
+directory "/var/lib/monit" do
+  owner "logstash"
+  group "logstash"
+  mode "0755"
+end
+
 execute "remove-server-conf" do
   command %{
     if [ -e /etc/logstash/conf.d/server.conf ]; then
