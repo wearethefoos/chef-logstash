@@ -10,8 +10,6 @@
 include_recipe "logstash::yumrepo" if platform_family? "rhel", "fedora"
 include_recipe "logstash::apt"     if platform_family? "debian"
 
-package "logstash"
-
 directory "/etc/logstash" do
   owner "logstash"
   group "logstash"
@@ -29,6 +27,8 @@ directory "/var/lib/monit" do
   group "logstash"
   mode "0755"
 end
+
+package "logstash"
 
 execute "remove-server-conf" do
   command %{
