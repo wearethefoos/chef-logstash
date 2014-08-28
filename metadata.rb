@@ -1,4 +1,4 @@
-name             'chef-logstash'
+name             'logstash'
 maintainer       'Wouter de Vos'
 maintainer_email 'oss@rein.io'
 license          'MIT'
