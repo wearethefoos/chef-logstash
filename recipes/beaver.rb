@@ -87,6 +87,12 @@ conf['fqdn'] = node['logstash']['beaver']['fqdn'] if node['logstash']['beaver'][
 node['logstash']['beaver']['outputs'].each do |outs|
   outs.each do |name, hash|
     case name
+      when "sqs" then
+        outputs << "sqs"
+        conf['sqs_aws_region'] = hash['region'] if hash.has_key?('region')
+        conf['sqs_aws_queue'] = hash['queue'] if hash.has_key?('queue')
+        conf['sqs_aws_access_key'] = hash['access_key'] if hash.has_key?('access_key')
+        conf['sqs_aws_secret_key'] = hash['secret'] if hash.has_key?('secret')
       when "rabbitmq", "amqp" then
         outputs << "rabbitmq"
         host = hash['host'] || logstash_server_ip || 'localhost'
